@@ -3,7 +3,7 @@ import { AddToDoItemBar } from '../../Components/AddToDoItemBar';
 import { ToDoItems } from '../../Components/ToDoItems';
 
 export const HomePage = () => {
-    const [task, setTask] = useState("")
+    const [task, setTask] = useState([])
     const handleDelete = () => {
         console.log('Inside Delete')
     }
@@ -18,8 +18,16 @@ export const HomePage = () => {
         <div>
             <h1>To Do</h1>
                 <AddToDoItemBar handleSubmit={setTask} task={task}/>
-                <ToDoItems handleDelete={handleDelete} handleDone={handleDone} handleEdit={handleEdit} title={task}/>
-
+                {/* <ToDoItems handleDelete={handleDelete} handleDone={handleDone} handleEdit={handleEdit} title={task}/> */}
+                {task.map((item) => {
+                   return (
+                       <div className="ContentTask">
+                           <ToDoItems handleDelete={handleDelete} handleDone={handleDone} handleEdit={handleEdit} title={item}/>
+                    
+                           </div>
+                    )
+                    
+                })}
         </div>
 
     )
