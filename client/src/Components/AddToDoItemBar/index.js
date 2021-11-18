@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 
@@ -11,7 +12,10 @@ export const AddToDoItemBar = ({handleSubmit, task}) => {
                 } placeholder="Your Task..." />
             </div>
             <button className="ui blue button" 
-            onClick={() => handleSubmit([...task, item])} 
+            onClick={() => {
+                handleSubmit([...task, item])
+                axios.post('http://localhost:4000/addTask',{item})
+            }} 
             >Submit</button>
         </div>
     )
